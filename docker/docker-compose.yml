@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  artemis-broker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+    environment:
+      - JAVA_OPTS="-Djavax.net.ssl.keyStore=/var/lib/artemis-broker/etc/broker.ks -Djavax.net.ssl.keyStorePassword=password -Djavax.net.ssl.trustStore=/var/lib/artemis-broker/etc/broker.ts -Djavax.net.ssl.trustStorePassword=password"
